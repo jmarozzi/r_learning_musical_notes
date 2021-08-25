@@ -19,18 +19,25 @@
 ##Make sure to use read_csv (with an underscore) to read in the data. The read.csv function, which is built into R, has a number of problems which the read_csv function avoids.
 
 
-# .... YOUR CODE FOR TASK 1 ....
-# Check where your working directory is for this project - type in the function getwd() to display your working directory.
+# 1a. Check where your working directory is for this project - type in the function getwd() to display your working directory.
 
+# .... YOUR CODE FOR TASK 1 ....
 
 # Go to your working directory folder on your computer and check the 'bb_chords.csv' is in there. 
 # LEARNING NOTE: it's important to know where your data is saved so that you can load it into R. 
 
-# Reading in the McGill Billboard chord data into R 
+## 1b. Load in the dplyr, readr, and ggplot2 packages - use the library() function. Before you can load the packages, you will need to install these packages in R if it's the first time you're using them. To install packages use the install.packages() function. 
+### For example to install the ggplot package, use the command install.packages('ggplot'). 
+### Note you only need to install packages once. But you need to load packages once in every R script you use. 
+
+# .... YOUR CODE FOR TASK 1 ....
+
+
+# 1c. Reading in the McGill Billboard chord data into R 
 
 bb <- ...
 
-# Taking a look at the first rows in bb
+# 1d. Taking a look at the first rows in bb
 # .... YOUR CODE FOR TASK 1 ....
 
 
@@ -49,10 +56,10 @@ bb <- ...
 #Display the 20 most common chords.
 #For readability (and to do things the tidyverse way!), try to write your code as a string of verb-based commands, one command per line, connected by %>%.
 
-# Counting the most common chords
+# 2a. Counting the most common chords
 bb_count <- ....
 
-# Displaying the top 20 chords
+# 2b. Displaying the top 20 chords
 
 # .... YOUR CODE FOR TASK 2 ....
 
@@ -68,7 +75,7 @@ bb_count <- ....
 ## Pipe the results into ggplot() and make a column plot where the X axis represents chord and the Y axis is represents share.
 ## Make your plot more readable by adding labels with xlab() and ylab(), and by flipping the plot using coord_flip().
 
-# Creating a bar plot from bb_count
+# 3a. Creating a bar plot from bb_count
 bb_count %>%
   slice(....) %>%
   mutate(share = ....,
@@ -99,14 +106,14 @@ bb_count %>%
 ##The last chord of one song combined with the first chord of the next song is not a bigram. Depending on the order of songs in the dataset, if we skip this step, we could end up with chord "progressions" connecting songs that occur perhaps 30 years apart in history!
 
 
-# Wrangling and counting bigrams
+# 4a. Wrangling and counting bigrams
 bb_bigram_count <- bb %>%
     # .... YOUR CODE FOR TASK 4 ....
 
-# Displaying the first 20 rows of bb_bigram_count
+# 4b. Displaying the first 20 rows of bb_bigram_count
 # .... YOUR CODE FOR TASK 4 ....
 
-#5. 5. Visualizing the most common chord progressions
+#5.Visualizing the most common chord progressions
   
 ## We can get a better sense of just how popular some of these chord progressions are if we plot them on a bar graph. 
 ## Note how the most common chord change, G major to D major, occurs more than twice as often than even some of the other top 20 chord bigrams.
@@ -118,7 +125,7 @@ bb_bigram_count <- bb %>%
 ##Copy-and-paste isn't cheating! In fact, knowing how to successfully copy, paste, and tweak existing code (yours, or someone else's -- with permission, of course) is an integral part of data science. It not only saves time and brain power, it also limits mistakes in your code when you use code you already know works. The iterative process of tweaking that code can also help you write more efficient code in the future.
 ##Of course, if you copy-and-paste the same code several times, you may just want to write a custom function instead!
 
-# Creating a column plot from bb_bigram_count
+# 5a. Creating a column plot from bb_bigram_count
 bb_bigram_count %>%
   slice(....) %>%
   mutate(share = ....,
@@ -155,11 +162,11 @@ bb_bigram_count %>%
 
 #When used in a piped string of commands, unique() does not need to take any arguments, since each command treats the output of the previous command as its first argument.
 
-# Finding 30 artists with the most songs in the corpus
+# 6a. Finding 30 artists with the most songs in the corpus
 bb_30_artists <- bb %>%
     #.... YOUR CODE FOR TASK 6 ....
 
-# Displaying 30 artists with the most songs in the corpus
+# 6b. Displaying 30 artists with the most songs in the corpus
 #.... YOUR CODE FOR TASK 6 ....
 
 #7. Tagging the corpus
@@ -172,11 +179,11 @@ tags <- tibble(
   artist = c('Abba', 'Billy Joel', 'Elton John', 'Stevie Wonder', 'The Rolling Stones', 'The Beatles', 'Eric Clapton'),
   instrument = c('piano', 'piano', 'piano', 'piano', 'guitar', 'guitar', 'guitar'))
 
-# Creating a new dataframe bb_tagged that includes a new column instrument from tags
+# 7a. Creating a new dataframe bb_tagged that includes a new column instrument from tags
 bb_tagged <- bb %>%
     # .... YOUR CODE FOR TASK 7 ....
     
-# Displaying the new data frame
+# 7b. Displaying the new data frame
 # .... YOUR CODE FOR TASK 7 ....
 
 #8. Comparing chords in piano-driven and guitar-driven songs
@@ -198,10 +205,10 @@ bb_tagged <- bb %>%
 
 #Try playing around with faceting a bit. What happens when you count chord and artist and pass artist to facet_grid()? What other parameters could you visualize in this way that tell a compelling story?
 
-# The top 20 most common chords
+# 8a. The top 20 most common chords
 top_20 <- bb_count$chord[1:20]
 
-# Comparing the frequency of the 20 most common chords in piano- and guitar-driven songs
+# 8b. Comparing the frequency of the 20 most common chords in piano- and guitar-driven songs
 bb_tagged %>%
   filter(....) %>%
   count(....) %>%
@@ -221,10 +228,11 @@ bb_tagged %>%
 # Copy and modify your code from Task 4 to add a bigram column, this time to bb_tagged.
 # Copy and modify your code from Task 8 to produce a faceted plot of bigram frequency from the top_20_bigrams that compares guitar- and piano-driven songs.
 # Remember to change all references to chords (including in the axis labels) to bigrams.
-# The top 20 most common bigrams
+
+# 9a. The top 20 most common bigrams
 top_20_bigram <- bb_bigram_count$bigram[1:20]
 
-# Creating a faceted plot comparing guitar- and piano-driven songs for bigram frequency
+# 9b. Creating a faceted plot comparing guitar- and piano-driven songs for bigram frequency
 bb_tagged %>%
   # .... MODIFIED CODE FROM TASK 4 .... 
   # .... MODIFIED CODE FROM TASK 8 ....
