@@ -14,18 +14,21 @@
 # TASK 1: Loading individual Tidyverse packages
 
 ##Load in the dplyr, readr, and ggplot2 packages.
-## Save the dataset 'bb_chords.csv' into your working directory
-## Load the data into R using read_csv.  Assign it to an object called bb.
+## Check that the dataset 'bb_chords.csv' is saved in your working directory
 ##Display the first rows of bb.
 ##Make sure to use read_csv (with an underscore) to read in the data. The read.csv function, which is built into R, has a number of problems which the read_csv function avoids.
 
 
 # .... YOUR CODE FOR TASK 1 ....
+# Check where your working directory is for this project - type in the function getwd() to display your working directory.
 
-# Reading in the McGill Billboard chord data
 
+# Go to your working directory folder on your computer and check the 'bb_chords.csv' is in there. 
+# LEARNING NOTE: it's important to know where your data is saved so that you can load it into R. 
 
-bb <- ....
+# Reading in the McGill Billboard chord data into R 
+
+bb <- ...
 
 # Taking a look at the first rows in bb
 # .... YOUR CODE FOR TASK 1 ....
